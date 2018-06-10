@@ -2,7 +2,6 @@
 import unittest
 import requests
 
-
 class GetEventListTest(unittest.TestCase):
     ''' 查询发布会信息（带用户认证）'''
 

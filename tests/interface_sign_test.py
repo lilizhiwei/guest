@@ -26,7 +26,7 @@ class AddEventTest(unittest.TestCase):
         payload = {'eid':1,'':'','limit':'','address':'','start_time':'','time':'','sign':''}
         r = requests.post(self.base_url, data=payload)
         result = r.json()
-        self.assertEqual(result['status'], 10011)
+        self.assertEqual(result['status'], 10012)
         self.assertEqual(result['message'], 'user sign null')
 
     def test_add_event_time_out(self):
@@ -35,7 +35,7 @@ class AddEventTest(unittest.TestCase):
         payload = {'eid':1,'':'','limit':'','address':'','start_time':'','time':now_time,'sign':'abc'}
         r = requests.post(self.base_url, data=payload)
         result = r.json()
-        self.assertEqual(result['status'], 10012)
+        self.assertEqual(result['status'], 10013)
         self.assertEqual(result['message'], 'user sign timeout')
 
     def test_add_event_sign_error(self):
@@ -43,7 +43,7 @@ class AddEventTest(unittest.TestCase):
         payload = {'eid':1,'':'','limit':'','address':'','start_time':'','time':self.client_time,'sign':'abc'}
         r = requests.post(self.base_url, data=payload)
         result = r.json()
-        self.assertEqual(result['status'], 10013)
+        self.assertEqual(result['status'], 10014)
         self.assertEqual(result['message'], 'user sign error')
 
     def test_add_event_eid_exist(self):
@@ -56,7 +56,7 @@ class AddEventTest(unittest.TestCase):
 
     def test_add_event_name_exist(self):
         ''' 名称已经存在 '''
-        payload = {'eid':11,'name':'一加3手机发布会','limit':2000,'address':"深圳宝体",'start_time':'2017','time':self.client_time,'sign':self.sign_md5}
+        payload = {'eid':11,'name':'一加4手机发布会','limit':2000,'address':"深圳宝体",'start_time':'2017','time':self.client_time,'sign':self.sign_md5}
         r = requests.post(self.base_url,data=payload)
         result = r.json()
         self.assertEqual(result['status'], 10023)
